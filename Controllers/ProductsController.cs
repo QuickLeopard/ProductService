@@ -6,7 +6,7 @@ using ProductService.Models;
 namespace ProductService.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]")] 
 public class ProductsController : ControllerBase
 {
     private readonly AppDbContext _context;

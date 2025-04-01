@@ -17,7 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Product API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Product API v1", Version = "v1" });
 });
 
 var app = builder.Build();
