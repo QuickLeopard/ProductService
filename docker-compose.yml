@@ -1,7 +1,7 @@
 
 services:
   web:
-    build: .
+    image: slepneviv/product-service:latest
     ports:
       - "5000:5000"
     environment:
