@@ -61,8 +61,8 @@ jobs:
             mkdir -p ~/www/app
             # Копируйте файлы через rsync/scp или git clone         
             # rsync -avz ./ /var/www/app/
-            ssh-keyscan -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
-            scp -P ${{ secrets.SERVER_PORT }} docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/app/
+            #ssh-keyscan -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+            #scp -P ${{ secrets.SERVER_PORT }} docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/app/
             cd ~/www/app  # Путь к проекту на сервере
             docker pull ${{ env.IMAGE_NAME }}:latest
             docker-compose down
