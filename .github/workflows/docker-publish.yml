@@ -47,7 +47,16 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}     
 
       - name: copy docker compose config       
-        run: ssh-keyscan -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts && scp -P ${{ secrets.SERVER_PORT }} -r ./docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/www/app/
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          source: docker-compose.yml
+          target: ~/www/app/
+        #run: scp -P ${{ secrets.SERVER_PORT }} -r ./docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/www/app/
+          # ssh-keyscan -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts && scp -P ${{ secrets.SERVER_PORT }} -r ./docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/www/app/
           #scp -P 5198 docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:docker-compose.yml
 
       - name: Deploy via SSH
