@@ -2,6 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY . .
+RUN ls -la  # Покажет файлы в рабочей директории
 RUN dotnet restore
 RUN dotnet publish -c Release -o /app
 
