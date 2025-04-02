@@ -46,8 +46,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}     
 
-      #- name: copy docker compose config
-      #  run: scp -P ${{ secrets.SERVER_PORT }} -r ./docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/app/
+      - name: copy docker compose config
+        run: scp -P ${{ secrets.SERVER_PORT }} -r ./docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/www/app/
           #scp -P 5198 docker-compose.yml ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:docker-compose.yml
 
       - name: Deploy via SSH
